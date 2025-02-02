@@ -9,15 +9,6 @@ export function AdminsView() {
 
   return (
     <div className="min-h-screen bg-base-100 p-4">
-      <div className="flex items-center gap-4 mb-8">
-        <img 
-          src="/leap-wallet.svg" 
-          alt="SubChecks Logo" 
-          className="w-12 h-12"
-        />
-        <h1 className="text-3xl font-bold">SubChecks Admins</h1>
-      </div>
-      
       <div className="flex flex-col gap-6 max-w-[1400px] mx-auto">
         <div className="flex flex-col md:flex-row gap-6">
           <div className="md:w-2/3">

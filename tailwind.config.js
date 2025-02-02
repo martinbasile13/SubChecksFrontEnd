@@ -9,7 +9,7 @@ export default {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["dark", "dracula", "luxury"],
+    themes: ["dark", "dracula", "luxury", "light"],
     darkTheme: "dracula",
   }
 } 
