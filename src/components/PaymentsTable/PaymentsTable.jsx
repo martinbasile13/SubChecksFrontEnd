@@ -40,7 +40,7 @@ export function PaymentsTable({ isAdmin }) {
   }, []);
 
   return (
-    <div className="card">
+    <div className="card bg-base-200 shadow-xl shadow-green-500">
       <div className="card-body">
         <h2 className="card-title">Historial de Pagos</h2>
         

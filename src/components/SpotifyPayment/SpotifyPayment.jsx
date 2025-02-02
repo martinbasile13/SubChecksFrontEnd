@@ -26,7 +26,7 @@ export function SpotifyPayment() {
   };
 
   return (
-    <div className="card">
+    <div className="card bg-base-200 shadow-xl shadow-green-500">
       <div className="card-body">
         <h2 className="card-title">Pago a Spotify</h2>
         
