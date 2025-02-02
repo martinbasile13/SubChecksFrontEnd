@@ -61,20 +61,22 @@ export const deleteSpotifyPayment = async (id) => {
 
 export const sendPaymentData = async (data) => {
   try {
-    // Función para limpiar y convertir el monto
+    // Función para limpiar y convertir el monto manteniendo los centavos
     const cleanAmount = (amount) => {
-      // Eliminar el símbolo $
+      // Eliminar el símbolo $ y espacios
       let cleanedAmount = amount.replace('$', '').trim();
       
-      // Si el número tiene formato argentino (3.861,00)
-      if (cleanedAmount.includes(',')) {
-        // Primero removemos los puntos
-        cleanedAmount = cleanedAmount.replace(/\./g, '');
-        // Luego reemplazamos la coma por punto
-        cleanedAmount = cleanedAmount.replace(',', '.');
+      // Si el número tiene formato con punto para miles y coma para centavos (3.861,00)
+      if (cleanedAmount.includes('.') || cleanedAmount.includes(',')) {
+        // Guardamos los centavos si existen
+        const parts = cleanedAmount.split(',');
+        const wholeNumber = parts[0].replace(/\./g, ''); // Eliminar puntos de miles
+        const cents = parts[1] || '00'; // Si no hay centavos, usar '00'
+        
+        // Combinar el número entero con los centavos
+        cleanedAmount = `${wholeNumber}.${cents}`;
       }
-      
-      // Convertir a número
+
       return parseFloat(cleanedAmount);
     };
 
