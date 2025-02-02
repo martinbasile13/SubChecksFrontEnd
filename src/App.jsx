@@ -8,11 +8,18 @@ import { BalancesTable } from "./components/BalancesTable/BalancesTable";
 import { SpotifyPaymentsTable } from "./components/SpotifyPaymentsTable/SpotifyPaymentsTable";
 
 function App() {
+  console.log('App rendering'); // Para debug
   return (
     <Router>
       <Routes>
         <Route path="/" element={<PublicView />} />
         <Route path="/admins" element={<AdminsView />} />
+        {/* Ruta de fallback */}
+        <Route path="*" element={
+          <div className="min-h-screen flex items-center justify-center">
+            <h1 className="text-2xl">Página no encontrada</h1>
+          </div>
+        } />
       </Routes>
     </Router>
   );
