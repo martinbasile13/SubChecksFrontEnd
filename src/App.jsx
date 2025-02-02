@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AdminView } from './views/AdminView';
+import { AdminsView } from './views/AdminsView';
 import { PublicView } from './views/PublicView';
 import { PdfProcessor } from "./components/PdfProcessor/PdfProcessor";
 import { SpotifyPayment } from "./components/SpotifyPayment/SpotifyPayment";
@@ -12,7 +12,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<PublicView />} />
-        <Route path="/admin" element={<AdminView />} />
+        <Route path="/admins" element={<AdminsView />} />
       </Routes>
     </Router>
   );
