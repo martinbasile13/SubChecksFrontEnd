@@ -61,16 +61,34 @@ export const deleteSpotifyPayment = async (id) => {
 
 export const sendPaymentData = async (data) => {
   try {
-    const montoLimpio = data.monto.replace(/[$ ,]/g, '');
-    
-    console.log('Enviando datos al servidor:', data);
+    // Función para limpiar y convertir el monto
+    const cleanAmount = (amount) => {
+      // Eliminar el símbolo $
+      let cleanedAmount = amount.replace('$', '').trim();
+      
+      // Si el número tiene formato argentino (3.861,00)
+      if (cleanedAmount.includes(',')) {
+        // Primero removemos los puntos
+        cleanedAmount = cleanedAmount.replace(/\./g, '');
+        // Luego reemplazamos la coma por punto
+        cleanedAmount = cleanedAmount.replace(',', '.');
+      }
+      
+      // Convertir a número
+      return parseFloat(cleanedAmount);
+    };
+
+    console.log('Monto original:', data.monto);
+    const montoLimpio = cleanAmount(data.monto);
+    console.log('Monto procesado:', montoLimpio);
+
     const formattedData = {
       remitente: data.remitente,
       monto: montoLimpio,
       tipo: 'normal'
     };
     
-    console.log('Datos formateados:', formattedData);
+    console.log('Enviando datos al servidor:', formattedData);
     const response = await axios.post(PROCESS_SALDOS_URL, formattedData);
     console.log('Respuesta del servidor:', response.data);
     return response.data;
@@ -81,12 +99,7 @@ export const sendPaymentData = async (data) => {
       status: error.response?.status,
       data: JSON.stringify(error.response?.config?.data)
     });
-    
-    if (error.response?.status === 500 && error.response?.data?.details?.includes('mysql')) {
-      throw new Error('El servidor está teniendo problemas de conexión. Por favor, contacte al administrador.');
-    } else {
-      throw new Error('Error al procesar el pago. Por favor, intente nuevamente más tarde.');
-    }
+    throw error;
   }
 };
 
