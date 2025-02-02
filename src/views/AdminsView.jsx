@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { PdfProcessor } from "../components/PdfProcessor/PdfProcessor";
 import { SpotifyPayment } from "../components/SpotifyPayment/SpotifyPayment";
 import { PaymentsTable } from "../components/PaymentsTable/PaymentsTable";
@@ -6,9 +5,7 @@ import { BalancesTable } from "../components/BalancesTable/BalancesTable";
 import { SpotifyPaymentsTable } from "../components/SpotifyPaymentsTable/SpotifyPaymentsTable";
 
 export function AdminsView() {
-  useEffect(() => {
-    console.log('AdminsView mounted');
-  }, []);
+  console.log('Rendering AdminsView'); // Debug log
 
   return (
     <div className="min-h-screen bg-base-100 p-4">

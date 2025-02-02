@@ -3,6 +3,8 @@ import { BalancesTable } from "../components/BalancesTable/BalancesTable";
 import { SpotifyPaymentsTable } from "../components/SpotifyPaymentsTable/SpotifyPaymentsTable";
 
 export function PublicView() {
+  console.log('Rendering PublicView'); // Debug log
+
   return (
     <div className="min-h-screen bg-base-100 p-4">
       <h1 className="text-center text-3xl font-bold mb-8">SubChecks</h1>
