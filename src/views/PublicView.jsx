@@ -7,7 +7,14 @@ export function PublicView() {
 
   return (
     <div className="min-h-screen bg-base-100 p-4">
-      <h1 className="text-center text-3xl font-bold mb-8">SubChecks</h1>
+      <div className="flex items-center gap-4 mb-8">
+        <img 
+          src="/leap-wallet.svg" 
+          alt="SubChecks Logo" 
+          className="w-12 h-12"
+        />
+        <h1 className="text-3xl font-bold">SubChecks</h1>
+      </div>
       
       <div className="flex flex-col gap-6 max-w-[1400px] mx-auto">
         <div className="w-full">
